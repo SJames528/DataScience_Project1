@@ -1,2 +1,5 @@
 # DataScienceFirstProject
-Hi Professor, please give us full marks
+
+Sam Harding di18089
+Kishalay Banerjee nl18797
+Katarzyna Staniewicz jj18840
