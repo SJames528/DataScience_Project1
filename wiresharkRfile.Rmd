@@ -1,0 +1,143 @@
+---
+title: "Wireshark Data"
+author: "Kishalay"
+date: "24 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Here, I am trying to subset the data into 9 non overlapping parts. The first set consists of data recorded from 0 to 24 seconds, the second set has data recorded from 24 to 48 seconds, and so on. I have 2 aims :
+
+1. Plotting the time stamps in each subset to check if the rate of arrival of packets in my laptop is uniform across the entire data. If not, I would put forward certain reasons which I feel are relevant.
+2. Regressing the length of packets on the corresponding time value to see if a mathematical relation exists between these 2 variables. If the regression is significant, I shall try to provide some justifications for it. 
+
+First, I am performing the regressions and then the plots. I have provided a table of results and conclusions later. 
+To start, we consider the regression of Length on Time for the entire data.
+
+```{r}
+y=lm(data$Length~data$Time)
+summary(y)
+
+```
+
+Now, we subset the data into 9 non-overlapping parts and consider individual regressions for each. 
+```{r}
+set1=subset(data,data$Time<=24.0)
+y1=lm(set1$Length~set1$Time)
+summary(y1)
+
+```
+
+
+```{r}
+set2=subset(data,data$Time>48.0 & data$Time<=72.0)
+y2=lm(set2$Length~set2$Time)
+summary(y2)
+
+```
+
+```{r}
+set3=subset(data,data$Time>72.0 & data$Time<=96.0)
+y3=lm(set3$Length~set3$Time)
+summary(y3)
+
+```
+
+```{r}
+set4=subset(data,data$Time>96.0 & data$Time<=120.0)
+y4=lm(set4$Length~set4$Time)
+summary(y4)
+
+```
+
+```{r}
+set5=subset(data,data$Time>120.0 & data$Time<=144.0)
+y5=lm(set5$Length~set5$Time)
+summary(y5)
+
+```
+
+```{r}
+set6=subset(data,data$Time>144.0 & data$Time<=168.0)
+y6=lm(set6$Length~set6$Time)
+summary(y6)
+
+```
+
+```{r}
+set7=subset(data,data$Time>168.0 & data$Time<=192.0)
+y7=lm(set7$Length~set7$Time)
+summary(y7)
+
+```
+
+```{r}
+set8=subset(data,data$Time>192.0 & data$Time<=216.0)
+y8=lm(set8$Length~set8$Time)
+summary(y8)
+
+```
+
+```{r}
+set9=subset(data,data$Time>216.0 & data$Time<=240.0)
+y9=lm(set9$Length~set9$Time)
+summary(y9)
+
+```
+
+
+The code below gives the plots of the time stamps of the entire data, and then the 9 subsets of the data. 
+
+```{r}
+plot(c(1:length(data$Time)),data$Time,type="l")
+
+```
+From this plot, we see that the plot depicts periodic step-like increases, while plateauing in between. There is also a steep increase right at the very end of the time period under consideration (approximately 4 minutes).
+Next we consider the same plot again, but for the subsets of the data. 
+
+```{r}
+par(mfrow=c(3,3))
+plot(c(1:length(set1$Time)),set1$Time,type="l")
+plot(c(1:length(set2$Time)),set2$Time,type="l")
+plot(c(1:length(set3$Time)),set3$Time,type="l")
+plot(c(1:length(set4$Time)),set4$Time,type="l")
+plot(c(1:length(set5$Time)),set5$Time,type="l")
+plot(c(1:length(set6$Time)),set6$Time,type="l")
+plot(c(1:length(set7$Time)),set7$Time,type="l")
+plot(c(1:length(set8$Time)),set8$Time,type="l")
+plot(c(1:length(set9$Time)),set9$Time,type="l")
+
+```
+
+We observe that all the graphs depict approximately step-like increments, with the magnitude of the increments varying widely. The steep increments suggest that a large number of data packets were moving in or out of my laptop during that period, while the gentler increments might suggest periods of comparitive lull in the movement of packets. 
+Further, I feel that the steep increments (ie, the larger numbers of packets) correspond to the times when I actively view/download webpages on my laptop, and the lulls indicate the times my laptop is connected to the web, but when I am not actively surfing. 
+Next, I am providing a table of the R-square values obtained from the regressions carried out before. 
+R-square gives an indication of the amount of variation in the data which is explained by the model we have chosen. Thus, higher the value of R-square, better is the model which has been fitted on the data.
+In this case, I have only considered a linear model in each case. 
+
+
+```{r}
+RSq=c(0.05,0.03,0.003,0.002,0.001,0.02,0.04,0.007,0.007)
+Subset=c("set1","set2","set3","set4","set5","set6","set7","set8","set9")
+d=data.frame(Subset,RSq)
+d
+plot(c(1:length(RSq)),RSq,type="l")
+RSqtotal=c(0.05,0.03,0.003,0.002,0.001,0.02,0.04,0.007,0.007,0.0002)
+plot(c(1:length(RSqtotal)),RSqtotal,col=ifelse(RSqtotal==0.0002,"red","blue"),pch=16,cex=2)
+
+```
+
+I have provided a plot of the RSq values for better understanding. From that we can see that the highest explained variation of 5% is achieved in the first subset of data, and consistently decreases thereafter till subset 5. It then increases upto subset 7 before decreasing again for the last 2 subsets.
+
+In the second graph, I have included the RSq value for the entire data along with the values for the subsets. I have coloured the point indicating the RSq value for the total data in RED, for better clarity. Thus, as we see, the RSq values for the subsets are all higher than the value for the entire data, which was 0.0002. This might indicate that it is a better option to study the data in smaller groups or subsets to make sense of it, rather than studying the whole thing as a single table.
+
+One of the reasons for the comparitively poor values of RSq obtained may be that a linear model is never a good fit for cybersecurity data, in general. It is possible that other models might give a better fit to this data. 
+
+
+
+
