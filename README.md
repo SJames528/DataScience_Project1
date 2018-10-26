@@ -15,11 +15,15 @@ In order to run the python code you need to change the working directory into th
 The working directory needs to be changed for "wiresharkanalysis.ipynb" as well. 
 
 Make sure you saved the following text files in the same working directory:
--reducedmyv4IPs.txt
+<p>-reducedmyv4IPs.txt
+ 
 -ip.txt
+
 -GeoIP.dat
+
 -GeoLiteCity.dat
--wiresharkdata.csv
+
+-wiresharkdata.csv</p>
 
 ### RStudio
 The R Markdown file and the "wireshark.csv" file should be saved in the same folder. 
