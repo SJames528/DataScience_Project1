@@ -1,0 +1,14 @@
+There are two seperate reports, one for our python code and one for R. These are titled "CombinedPythonCode.ipynb" and "wiresharkRfile.Rmd" respectively. 
+Please download the files on your computer and make sure there are all in the same folder. 
+
+PYTHON
+In order to run the python code you need to change the working directory into the place where you saved the files. You can do it by changing the ... line of "CombinedPythonCode.ipynb".
+
+Make sure you saved the following text files in the same working directory:
+-listofcountries.txt
+-reducedmyv4IPs.txt
+-ip.txt
+-GeoIP.dat
+-GeoLiteCity.dat
+
+RStudio
