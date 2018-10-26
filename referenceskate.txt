@@ -1,0 +1,22 @@
+List of all links we used:
+
+https://python-graph-gallery.com/262-worcloud-with-specific-shape/
+https://www.kaggle.com/c/malware-classification
+https://github.com/bonsaiviking/IPMap
+https://www.geeksforgeeks.org/generating-word-cloud-python/
+http://weka.8497.n7.nabble.com/file/n23121/credit_fruad.arff
+https://www.kaggle.com/mlg-ulb/creditcardfraud
+https://github.com/carriegardner428/cybersecurity_datascience
+https://github.com/carriegardner428/cybersecurity_datascience/blob/master/Datasets.ipynb
+https://github.com/Jasmine424/EC521_Project_IoTHoneyPot/blob/master/Data%20analysis%20of%20input%20and%20ips.ipynb
+https://github.com/lucamaiano/data-driven-intrusion-detection
+http://www.malwaredomainlist.com/forums/index.php?topic=3270.0
+https://opensourceforu.com/2016/11/python-programming-digital-forensics-security-analysis/
+https://csr.lanl.gov/data/
+http://statisticalcyber.com/talks/turcotte_slides.pdf
+https://arxiv.org/pdf/1707.00640.pdf
+https://snap.stanford.edu/data/index.html#socnets
+https://medium.com/cyberdefenders/python-for-cybersecurity-lesson-3-data-analysis-with-pandas-501441e14fe0
+https://www.slideshare.net/ajayohri/using-r-for-cyber-security-part-2
+https://github.com/hrbrmstr/crafter
+https://www.geeksforgeeks.org/python-check-two-lists-least-one-element-common/ 
