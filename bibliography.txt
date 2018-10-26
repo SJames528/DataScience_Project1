@@ -23,3 +23,6 @@ https://medium.com/cyberdefenders/python-for-cybersecurity-lesson-3-data-analysi
 https://www.slideshare.net/ajayohri/using-r-for-cyber-security-part-2
 https://www.geeksforgeeks.org/python-check-two-lists-least-one-element-common/
 https://dev.maxmind.com/geoip/legacy/geolite/
+
+Cybersecurity and Applied Mathematics, Leigh Metcalf and William Casey, Elsevier 2016
+Information Fusion fo Cyber-Security Analytics, Izzat Alsmadi and George Karabatis and Ahmed AlEroud, Springer 2017
